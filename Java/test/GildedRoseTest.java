@@ -23,6 +23,14 @@ class GildedRoseTest
         items.add(new Item("Axe", 0, 18));
         items.add(new Item("Warhammer", 3,0));
         items.add(new Item("Aged Brie", 5, 19));
+        items.add(new Item("Aged Brie", 5, 50));
+        items.add(new Item("Sulfuras", 99, 999));
+        items.add(new Item("Backstage Pass", 20, 10));
+        items.add(new Item("Backstage Pass", 10, 15));
+        items.add(new Item("Backstage Pass", 5, 17));
+        items.add(new Item("Backstage Pass", 0, 20));
+        items.add(new Item("Conjured Item", 10, 20));
+        items.add(new Item("Conjured Item", 0, 20));
 
         shop = new Shop(items);
     }
@@ -78,6 +86,56 @@ class GildedRoseTest
     {
         shop.updateItems();
         assertEquals(20, shop.Inventory.get(5).quality);
+    }
+
+    @Test
+    void should_check_quality_no_higher_than_50()
+    {
+        shop.updateItems();
+        assertEquals(50, shop.Inventory.get(6).quality);
+    }
+
+    @Test
+    void should_check_Sulfuras_doesnt_update()
+    {
+        shop.updateItems();
+        assertEquals(99, shop.Inventory.get(7).sellIn);
+        assertEquals(999, shop.Inventory.get(7).quality);
+    }
+
+    @Test
+    void should_check_pass_quality_goes_up()
+    {
+        shop.updateItems();
+        assertEquals(11, shop.Inventory.get(8).quality);
+    }
+
+    @Test
+    void should_check_pass_quality_expiration_10_days()
+    {
+        shop.updateItems();
+        assertEquals(17, shop.Inventory.get(9).quality);
+    }
+
+    @Test
+    void should_check_pass_quality_expiration_5_days()
+    {
+        shop.updateItems();
+        assertEquals(20, shop.Inventory.get(10).quality);
+    }
+
+    @Test
+    void should_check_pass_quality_expiration_0_days()
+    {
+        shop.updateItems();
+        assertEquals(0, shop.Inventory.get(11).quality);
+    }
+
+    @Test
+    void should_check_update_Conjured_twice_as_fast()
+    {
+        shop.updateItems();
+        assertEquals(18, shop.Inventory.get(12).quality);
     }
 
 }
