@@ -1,5 +1,4 @@
-import gildedrose.Shop;
-import gildedrose.Item;
+import gildedrose.*;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -17,20 +16,20 @@ class GildedRoseTest
 
         ArrayList<Item> items = new ArrayList<Item>();
 
-        items.add(new Item("Sword", 5, 25));
-        items.add(new Item("Shield", 5, 25));
-        items.add(new Item("Spear", 8, 20));
-        items.add(new Item("Axe", 0, 18));
-        items.add(new Item("Warhammer", 3,0));
-        items.add(new Item("Aged Brie", 5, 19));
-        items.add(new Item("Aged Brie", 5, 50));
-        items.add(new Item("Sulfuras", 99, 999));
-        items.add(new Item("Backstage Pass", 20, 10));
-        items.add(new Item("Backstage Pass", 10, 15));
-        items.add(new Item("Backstage Pass", 5, 17));
-        items.add(new Item("Backstage Pass", 0, 20));
-        items.add(new Item("Conjured Item", 10, 20));
-        items.add(new Item("Conjured Item", 0, 20));
+        items.add(new GenericItem("Sword", 5, 25));
+        items.add(new GenericItem("Shield", 5, 25));
+        items.add(new GenericItem("Spear", 8, 20));
+        items.add(new GenericItem("Axe", 0, 18));
+        items.add(new GenericItem("Warhammer", 3,0));
+        items.add(new CheeseItem("Aged Brie", 5, 19));
+        items.add(new CheeseItem("Aged Brie", 5, 50));
+        items.add(new LegendaryItem("Sulfuras", 99, 999));
+        items.add(new EventItem("Backstage Pass", 20, 10));
+        items.add(new EventItem("Backstage Pass", 10, 15));
+        items.add(new EventItem("Backstage Pass", 5, 17));
+        items.add(new EventItem("Backstage Pass", 0, 20));
+        items.add(new ConjuredItem("Conjured Item", 10, 20));
+        items.add(new ConjuredItem("Conjured Item", 0, 20));
 
         shop = new Shop(items);
     }
