@@ -19,6 +19,8 @@ class GildedRoseTest
 
         items.add(new Item("Sword", 5, 25));
         items.add(new Item("Shield", 5, 25));
+        items.add(new Item("Spear", 8, 20));
+        items.add(new Item("Axe", 0, 18));
 
         shop = new Shop(items);
     }
@@ -46,6 +48,20 @@ class GildedRoseTest
     {
         shop.updateItems();
         assertEquals(4, shop.Inventory.get(1).sellIn);
+    }
+
+    @Test
+    void should_check_update_quality()
+    {
+        shop.updateItems();
+        assertEquals(19, shop.Inventory.get(2).quality);
+    }
+
+    @Test
+    void should_check_double_quality_loss_after_expiration()
+    {
+        shop.updateItems();
+        assertEquals(16, shop.Inventory.get(3).quality);
     }
 
 }
