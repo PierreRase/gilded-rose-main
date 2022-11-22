@@ -13,7 +13,10 @@ public class Shop
 
     public void updateItems()
     {
-        currentItem = Inventory.get(1);
-        Item.updateItem(currentItem);
+        for (int i=0; i<Inventory.size(); i++)
+        {
+            currentItem = Inventory.get(i);
+            Item.updateItem(currentItem);
+        }
     }
 }

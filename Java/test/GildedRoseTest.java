@@ -47,4 +47,5 @@ class GildedRoseTest
         shop.updateItems();
         assertEquals(4, shop.Inventory.get(1).sellIn);
     }
+
 }
