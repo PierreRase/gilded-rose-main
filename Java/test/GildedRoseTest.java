@@ -21,6 +21,8 @@ class GildedRoseTest
         items.add(new Item("Shield", 5, 25));
         items.add(new Item("Spear", 8, 20));
         items.add(new Item("Axe", 0, 18));
+        items.add(new Item("Warhammer", 3,0));
+        items.add(new Item("Aged Brie", 5, 19));
 
         shop = new Shop(items);
     }
@@ -62,6 +64,20 @@ class GildedRoseTest
     {
         shop.updateItems();
         assertEquals(16, shop.Inventory.get(3).quality);
+    }
+
+    @Test
+    void should_check_quality_no_negative()
+    {
+        shop.updateItems();
+        assertEquals(0, shop.Inventory.get(4).quality);
+    }
+
+    @Test
+    void should_check_quality_up_for_Brie()
+    {
+        shop.updateItems();
+        assertEquals(20, shop.Inventory.get(5).quality);
     }
 
 }

@@ -16,10 +16,21 @@ public class Item
     public static void updateItem(Item item)
     {
         item.sellIn += -1;
-        item.quality += -1;
-        if(item.sellIn <= 0)
+        if(item.name == "Aged Brie")
         {
-            item.quality +=-1;
+            item.quality += 1;
+        }
+        else
+        {
+            item.quality += -1;
+            if (item.sellIn <= 0)
+            {
+                item.quality += -1;
+            }
+            if (item.quality < 0)
+            {
+                item.quality = 0;
+            }
         }
     }
 }
