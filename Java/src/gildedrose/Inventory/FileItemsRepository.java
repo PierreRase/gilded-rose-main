@@ -19,7 +19,7 @@ public class FileItemsRepository extends ItemRepository
         Scanner scan = null;
         try
         {
-            scan = new Scanner(new File("C:/Users/Rasep/Desktop/EPSI/Architecure Applicative/gilded-rose-main/Java/inventory.csv"));
+            scan = new Scanner(new File("inventory.csv"));
         }
         catch (FileNotFoundException e)
         {
