@@ -1,4 +1,4 @@
-package gildedrose;
+package gildedrose.Item;
 
 public class GenericItem extends Item
 {

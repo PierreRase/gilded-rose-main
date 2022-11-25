@@ -1,4 +1,4 @@
-package gildedrose;
+package gildedrose.Item;
 
 public abstract class Item
 {

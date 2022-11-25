@@ -1,4 +1,6 @@
-package gildedrose;
+package gildedrose.Shop;
+
+import gildedrose.Item.Item;
 
 import java.util.ArrayList;
 
@@ -10,7 +12,7 @@ public class Shop
         this.Inventory = item;
     }
 
-    public void updateItems()
+    public void updateInventory()
     {
         for (int i=0; i<Inventory.size(); i++)
         {
