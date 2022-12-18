@@ -26,8 +26,6 @@ public class InMemoryItemsRepository extends ItemRepository
         items.add(new EventItem("BackstagePass", 0,20));
         items.add(new ConjuredItem("ConjuredItem", 10,20));
         items.add(new ConjuredItem("ConjuredItem",0,20));
-
-
     }
 
     @Override
