@@ -1,22 +1,26 @@
 package gildedrose.Shop;
 
+import gildedrose.Inventory.ItemRepository;
 import gildedrose.Item.Item;
 
-import java.util.ArrayList;
+import java.io.IOException;
+import java.util.List;
 
 public class Shop
 {
-    public ArrayList<Item> Inventory;
-    public Shop(ArrayList<Item> item)
+    private ItemRepository repositoryItem;
+    public Shop(ItemRepository repository)
     {
-        this.Inventory = item;
+        this.repositoryItem = repository;
     }
 
     public void updateInventory()
     {
-        for (int i=0; i<Inventory.size(); i++)
+        List<Item> items = this.repositoryItem.getInventory();
+        for (Item item : items)
         {
-            Inventory.get(i).update();
+            item.update();
         }
+        this.repositoryItem.saveInventory(items);
     }
 }

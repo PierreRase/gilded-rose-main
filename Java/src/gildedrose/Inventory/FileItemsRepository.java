@@ -4,6 +4,7 @@ import gildedrose.Item.*;
 
 import java.io.*;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Scanner;
 
@@ -32,19 +33,20 @@ public class FileItemsRepository extends ItemRepository
             String itemName = fields[0];
             int sellIn = Integer.parseInt(fields[1]);
             int quality = Integer.parseInt(fields[2]);
-            if(itemName == "Sulfuras")
+
+            if(itemName.equals("Sulfuras"))
             {
                 items.add(new LegendaryItem(itemName,sellIn, quality));
             }
-            else if(itemName == "Aged Brie")
+            else if(itemName.equals("AgedBrie"))
             {
                 items.add(new CheeseItem(itemName, sellIn, quality));
             }
-            else if(itemName == "Backstage Passes")
+            else if(itemName.equals("BackstagePass"))
             {
                 items.add(new EventItem(itemName, sellIn, quality));
             }
-            else if(itemName == "Conjured Item")
+            else if(itemName.equals("ConjuredItem"))
             {
                 items.add(new ConjuredItem(itemName, sellIn, quality));
             }
@@ -59,8 +61,25 @@ public class FileItemsRepository extends ItemRepository
     }
 
     @Override
-    public void saveInventory(Item[] item)
+    public void saveInventory(List<Item> items)
     {
+        try
+        {
+            file = new FileWriter("inventory.csv");
+            Iterator iterator = items.iterator();
+            while(iterator.hasNext())
+            {
+                Item item = (Item)iterator.next();
+                file.append(item.getName()+",");
+                file.append(item.getSellIn()+",");
+                file.append(item.getQuality()+"\n");
+            }
+
+            file.close();
+        } catch (IOException e)
+        {
+            throw new RuntimeException(e);
+        }
 
     }
 }

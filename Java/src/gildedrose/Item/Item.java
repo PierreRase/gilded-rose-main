@@ -14,4 +14,17 @@ public abstract class Item
     }
 
     public abstract void update();
+
+    public String getName()
+    {
+        return name;
+    }
+    public int getSellIn()
+    {
+        return sellIn;
+    }
+    public int getQuality()
+    {
+        return quality;
+    }
 }
