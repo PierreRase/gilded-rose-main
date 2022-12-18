@@ -41,4 +41,22 @@ public class InMemoryItemsRepository extends ItemRepository
     {
         this.items=items;
     }
+
+    @Override
+    public Item findItem(String searchedName, Integer searchedquality)
+    {
+        List<Item> items = getInventory();
+        Item foundItem = null;
+
+        for(Item item : items){
+
+            if((item.getName() == searchedName) && (item.getQuality() == searchedquality)){
+
+                foundItem = item;
+            }
+
+        }
+        return foundItem;
+
+    }
 }

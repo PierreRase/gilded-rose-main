@@ -5,12 +5,14 @@ public abstract class Item
     public String name;
     public Integer sellIn;
     public Integer quality;
+    public Integer price;
 
     public Item(String name, Integer sellIn, Integer quality)
     {
         this.name = name;
         this.sellIn = sellIn;
         this.quality = quality;
+        this.price = quality*10;
     }
 
     public abstract void update();
@@ -27,4 +29,6 @@ public abstract class Item
     {
         return quality;
     }
+
+    public int getPrice(){return price;};
 }

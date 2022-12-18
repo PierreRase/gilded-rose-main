@@ -1,6 +1,7 @@
 import gildedrose.Inventory.FileItemsRepository;
 import gildedrose.Inventory.InMemoryItemsRepository;
 import gildedrose.Inventory.ItemRepository;
+import gildedrose.Item.Item;
 import gildedrose.Shop.Shop;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -22,6 +23,12 @@ class GildedRoseTest
     }
 
     @Test
+    void should_show_price()
+    {
+        assertEquals(250, inventory.getInventory().get(0).price);
+    }
+
+    @Test
     void should_check_update_sellIn()
     {
         assertEquals(4, inventory.getInventory().get(1).sellIn);
@@ -30,42 +37,36 @@ class GildedRoseTest
     @Test
     void should_check_update_quality()
     {
-
         assertEquals(19, inventory.getInventory().get(2).quality);
     }
 
     @Test
     void should_check_double_quality_loss_after_expiration()
     {
-
         assertEquals(16, inventory.getInventory().get(3).quality);
     }
 
     @Test
     void should_check_quality_no_negative()
     {
-
         assertEquals(0, inventory.getInventory().get(4).quality);
     }
 
     @Test
     void should_check_quality_up_for_Brie()
     {
-
         assertEquals(20, inventory.getInventory().get(5).quality);
     }
 
     @Test
     void should_check_quality_no_higher_than_50()
     {
-
         assertEquals(50, inventory.getInventory().get(6).quality);
     }
 
     @Test
     void should_check_Sulfuras_doesnt_update()
     {
-
         assertEquals(99, inventory.getInventory().get(7).sellIn);
         assertEquals(999, inventory.getInventory().get(7).quality);
     }
@@ -73,36 +74,39 @@ class GildedRoseTest
     @Test
     void should_check_pass_quality_goes_up()
     {
-
         assertEquals(11, inventory.getInventory().get(8).quality);
     }
 
     @Test
     void should_check_pass_quality_expiration_10_days()
     {
-
         assertEquals(17, inventory.getInventory().get(9).quality);
     }
 
     @Test
     void should_check_pass_quality_expiration_5_days()
     {
-
         assertEquals(20, inventory.getInventory().get(10).quality);
     }
 
     @Test
     void should_check_pass_quality_expiration_0_days()
     {
-
         assertEquals(0, inventory.getInventory().get(11).quality);
     }
 
     @Test
     void should_check_update_Conjured_twice_as_fast()
     {
-
         assertEquals(18, inventory.getInventory().get(12).quality);
+    }
+
+    @Test
+    void should_find_item()
+    {
+        Item founditem = inventory.findItem("Spear", 19);
+        assertEquals("Spear",founditem.getName());
+        assertEquals(19, founditem.getQuality());
     }
 
 }
